@@ -23,7 +23,7 @@ app.use(express.static("public"));
 
 
 //Connecting to MongoDB
-mongoose.connect("mongodb://user:ro0tro0t@ds355357.mlab.com:55357/heroku_cs6dl5ll",{ useNewUrlParser: true });
+mongoose.connect(process.env.PORT || "mongodb://user:ro0tro0t@ds355357.mlab.com:55357/heroku_cs6dl5ll",{ useNewUrlParser: true });
 
 
 
