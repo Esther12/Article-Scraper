@@ -1,5 +1,13 @@
-
+var notes = {};
 $("#scraptNYT").on("click", function(){
+    $.ajax({
+        url : "/scrape",
+        method : "GET"
+    }).then((data)=>{
+        console.log(data);
+    });
+});
+$(document).ready(function(){
     $.ajax({
         url : "/articles",
         method : "GET"
@@ -20,16 +28,56 @@ $("#scraptNYT").on("click", function(){
 });
 
 $("#articleList").on("click",".addNote", function(){
+     // Empty the notes section
+     $("#commentNote").val("");
+    $("#historyNote").empty();
     let ArticleId = $(this).attr("data-id");
     $("#newsId").text(ArticleId);
-})
+    $.ajax({
+        url : "/getNote/" + ArticleId,
+        method : "GET"
+    }).then((data)=>{
+        console.log(data);
+        for(let i = 0; i< data.length; i++){
+            $("#historyNote").append(`
+            <li class="list-group-item">${data[i].comments} <button class="float-right btn btn-danger btn-sm deletNote" data-id=${data[i]._id} >Delete</button></li>
+        `)
+        }
+    });
+});
 
 $("#submitNote").on("click",function(){
-    let comments = $("#commentNote").val();
-    let id = $("#newsId").text();
+     let comments = $("#commentNote").val();
+     let id = $("#newsId").text();
+     notes ={
+        articles :  id,
+        comments : comments
+     };
+     $.ajax({
+         url : "/addNotes",
+         method : "POST",
+         data : notes
+     }).then(function(data){
+        // Log the response
+        console.log(data);
+         // Empty the notes section
+        $("#commentNote").val("");
+        location.href("/");
+     });
     console.log(comments,id);
+    
+});
+
+$("#historyNote").on("click",".deletNote", function(){
+    let noteId = $(this).attr("data-id");
+    $.ajax({
+        url : "/delete/" + noteId,
+        method : "GET"
+    }).then(data=>{
+        // Log the response
+        console.log(data);
+        location.href("/");
+    });
+    
 })
 
-$(".emptyData").on("click",function(){
-        $("#commentNote").html();
-})

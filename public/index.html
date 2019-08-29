@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <title>Document</title>
+    <title>Scrapt!</title>
 </head>
 <body>
     <button class="btn btn-info" id="scraptNYT">Scrapt!</button>
@@ -25,7 +25,13 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <textarea id="commentNote"></textarea>
+                    <div class="card" style="width: auto;">
+                        <ul class="list-group list-group-flush" id="historyNote">
+                        </ul>
+                      </div>
+                      <hr>
+                      <p>Add Notes :</p>
+                  <textarea class = "form-control"id="commentNote" rows="3"></textarea>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary emptyData" data-dismiss="modal" >Close</button>

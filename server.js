@@ -79,6 +79,57 @@ app.get("/articles", function(req, res) {
       });
   });
 
+
+app.post("/addNotes",function(req,res){
+    
+    db.Note.create(req.body)
+    .then(function(dbNote) {
+        // View the added result in the console
+        console.log(dbNote);
+    })
+    .catch(function(err) {
+        // If an error occurred, log it
+        console.log(err);
+    });
+});
+
+app.get("/getNote/:id",function(req,res){
+    console.log("note articles : ",req.params.id)
+    db.Note.find({ articles : req.params.id})
+      .populate("Articles")
+      .then(function(dbNote) {
+        // If we were able to successfully find Articles, send them back to the client
+        console.log("get note",dbNote);
+        res.json(dbNote);
+      })
+      .catch(function(err) {
+        // If an error occurred, send it to the client
+        res.json(err);
+      });
+});
+
+app.get("/delete/:id", function(req, res) {
+    // Remove a note using the objectID
+    db.Note.findByIdAndRemove(
+      req.params.id
+      ,
+      function(error, removed) {
+        // Log any errors from mongojs
+        if (error) {
+          console.log(error);
+          res.send(error);
+        }
+        else {
+          // Otherwise, send the mongojs response to the browser
+          // This will fire off the success function of the ajax request
+          console.log(removed);
+          res.send(removed);
+        }
+      }
+    );
+  });
+
+
 // Start the server
 app.listen(PORT, function() {
     console.log("App running on port " + PORT + "!");
