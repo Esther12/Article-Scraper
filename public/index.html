@@ -6,30 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <title>Document</title>
 </head>
 <body>
     <button class="btn btn-info" id="scraptNYT">Scrapt!</button>
-    <div class="col-8 justify-content-md-center" id="articleList">
+    <div class="row justify-content-md-center m-5" id="articleList">
 
     </div>
    
+    <div class="modal" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
     <script  src = "app.js"></script>
-    <!-- <script>
-        $("#scraptNYT").on("click", ()=>{
-        $.ajax({
-            method : "GET",
-            url : "/articles"
-        }).then((data)=>{
-            console.log(data);
-            data.map(x=>(x)=>{
-                $("#articleList").append(`
-                    <h2><a href = ${x.link}>${x.title}<a></h2>
-                    <p>${x.discription}</p>
-                `)
-            })
-        })
-    });
-    </script> -->
 </body>
 </html>
