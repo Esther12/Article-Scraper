@@ -20,5 +20,11 @@ $("#scraptNYT").on("click", function(){
 });
 
 $("#articleList").on("click",".addNote", function(){
-    console.log($(this).attr("data-id"));
+    let ArticleId = $(this).attr("data-id");
+    $("#newsId").text(ArticleId);
+})
+
+$("#submitNote").on("click",function(){
+    let comments = $("#commentNote").val();
+    console.log(comments);
 })
