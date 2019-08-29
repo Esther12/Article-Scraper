@@ -22,9 +22,9 @@ app.use(express.static("public"));
 
 
 // Connecting to the mongoDB
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytscraper";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://Esther:genDij-kytvor-nefbu7@ds355357.mlab.com:55357/heroku_cs6dl5ll";
 
-mongoose.connect("mongodb://localhost/nytscraper",{ useNewUrlParser: true });
+mongoose.connect(MONGODB_URI,{ useNewUrlParser: true });
 
 
 
