@@ -26,5 +26,10 @@ $("#articleList").on("click",".addNote", function(){
 
 $("#submitNote").on("click",function(){
     let comments = $("#commentNote").val();
-    console.log(comments);
+    let id = $("#newsId").text();
+    console.log(comments,id);
+})
+
+$(".emptyData").on("click",function(){
+        $("#commentNote").html();
 })
