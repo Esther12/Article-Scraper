@@ -40,7 +40,10 @@ $("#articleList").on("click",".addNote", function(){
         console.log(data);
         for(let i = 0; i< data.length; i++){
             $("#historyNote").append(`
-            <li class="list-group-item">${data[i].comments} <button class="float-right btn btn-danger btn-sm deletNote" data-id=${data[i]._id} >Delete</button></li>
+            <li class="list-group-item">${data[i].comments} 
+            <button class="float-right btn btn-danger btn-sm deletNote" 
+            data-id=${data[i]._id} data-dismiss="modal"
+            >Delete</button></li>
         `)
         }
     });
@@ -62,7 +65,7 @@ $("#submitNote").on("click",function(){
         console.log(data);
          // Empty the notes section
         $("#commentNote").val("");
-        location.href("/");
+        
      });
     console.log(comments,id);
     
@@ -76,8 +79,6 @@ $("#historyNote").on("click",".deletNote", function(){
     }).then(data=>{
         // Log the response
         console.log(data);
-        location.href("/");
     });
-    
 })
 
