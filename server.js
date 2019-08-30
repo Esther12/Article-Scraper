@@ -25,8 +25,8 @@ app.use(express.static("public"));
 //Connecting to MongoDB
 //mongoose.connect(process.env.PORT || "mongodb://user:ro0tro0t@ds355357.mlab.com:55357/heroku_cs6dl5ll",{ useNewUrlParser: true });
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://user:ro0tro0t@ds355357.mlab.com:55357/heroku_cs6dl5ll";
-
+//var MONGODB_URI = process.env.MONGODB_URI || "mongodb://user:ro0tro0t@ds355357.mlab.com:55357/heroku_cs6dl5ll";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytscraper";
 mongoose.connect(MONGODB_URI,{ useNewUrlParser: true });
 
 console.log("\n***********************************\n" +
@@ -43,11 +43,11 @@ app.get("/scrape", async (req, res,next) => {
                     $(".css-4jyr1y").each((i,element)=>{
                         let title = $(element).find("h2").text();
                         let link = $(element).find("a").attr("href");
-                        let discription = $(element).find(".e1xfvim31").text();   
+                        let description = $(element).find(".css-1echdzn").text();   
 
                         results.title = title;
                         results.link = link;
-                        results.discription = discription;
+                        results.description = description;
 
                         // Create a new Article using the `result` object built from scraping
                         db.Article.create(results)

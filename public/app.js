@@ -15,11 +15,11 @@ $(document).ready(function(){
         console.log(data);
         for(let i = 0; i< 100; i++){
             $("#articleList").append(`
-            <div class="card" style="width: 18rem;">
+            <div class="card m-1" style="width: 100%;">
             <div class="card-body">
-            <h6 class="card-title"><a href = ${data[i].link}>${data[i].title}<a></h6>
-            <p class="card-text">${data[i].discription}</p>
-            <button class="btn btn-warning btn-sm addNote" data-toggle="modal" data-target="#basicModal" data-id=${data[i]._id}>Add Notes</button>
+            <h4 class="card-title"><a href = ${data[i].link}>${data[i].title}<a></h4>
+            <p class="card-text">${data[i].description}</p>
+            <button class="btn btn-warning btn-sm float-right addNote" data-toggle="modal" data-target="#basicModal" data-id=${data[i]._id}>Add Notes</button>
             <div>
             <div>
         `)
