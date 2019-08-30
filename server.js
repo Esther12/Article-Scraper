@@ -43,7 +43,7 @@ app.get("/scrape", async (req, res,next) => {
                     $(".css-4jyr1y").each((i,element)=>{
                         let title = $(element).find("h2").text();
                         let link = $(element).find("a").attr("href");
-                        let discription = $(element).find("a").children("p").text();   
+                        let discription = $(element).find(".e1xfvim31").text();   
 
                         results.title = title;
                         results.link = link;
