@@ -25,8 +25,8 @@ app.use(express.static("public"));
 //Connecting to MongoDB
 //mongoose.connect(process.env.PORT || "mongodb://user:ro0tro0t@ds355357.mlab.com:55357/heroku_cs6dl5ll",{ useNewUrlParser: true });
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://user:ro0tro0t@ds355357.mlab.com:55357/heroku_cs6dl5ll";
-//var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytscraper";
+//var MONGODB_URI = process.env.MONGODB_URI || "mongodb://user:ro0tro0t@ds355357.mlab.com:55357/heroku_cs6dl5ll";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytscraper";
 mongoose.connect(MONGODB_URI,{ useNewUrlParser: true });
 
 console.log("\n***********************************\n" +
@@ -35,6 +35,9 @@ console.log("\n***********************************\n" +
             "\n***********************************\n");
 
 app.get("/scrape", async (req, res,next) => {
+    //intial the database
+    db.Article.drop();
+    db.Note.drop();
     axios.get("https://www.nytimes.com/section/politics").then(function(response){
         var $ = cheerio.load(response.data);
         
@@ -48,7 +51,7 @@ app.get("/scrape", async (req, res,next) => {
                         results.title = title;
                         results.link = link;
                         results.description = description;
-
+                        
                         // Create a new Article using the `result` object built from scraping
                         db.Article.create(results)
                         .then(function(dbArticle) {
