@@ -53,10 +53,10 @@ app.get("/scrape", function(req, res) {
                     // View the added result in the console
                     console.log(dbArticle);
                 })
-                .catch(function(err) {
-                    // If an error occurred, log it
-                    console.log(err);
-                });
+                // .catch(function(err) {
+                //     // If an error occurred, log it
+                //     console.log(err);
+                // });
             
             });
         // Send a message to the client
@@ -86,10 +86,10 @@ app.post("/addNotes",function(req,res){
         // View the added result in the console
         console.log(dbNote);
     })
-    .catch(function(err) {
-        // If an error occurred, log it
-        console.log(err);
-    });
+    // .catch(function(err) {
+    //     // If an error occurred, log it
+    //     console.log(err);
+    // });
 });
 
 app.get("/getNote/:id",function(req,res){
@@ -101,10 +101,10 @@ app.get("/getNote/:id",function(req,res){
         console.log("get note",dbNote);
         res.json(dbNote);
       })
-      .catch(function(err) {
-        // If an error occurred, send it to the client
-        res.json(err);
-      });
+    //   .catch(function(err) {
+    //     // If an error occurred, send it to the client
+    //     res.json(err);
+    //   });
 });
 
 app.get("/delete/:id", function(req, res) {
