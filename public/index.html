@@ -1,52 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="app.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <title>Scrapt!</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="col-10 jumbotron jumbotron-fluid  mx-auto">
-        <div class="container">
-          <h1 class="display-4">Fluid jumbotron</h1>
-          <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-          <button class="btn btn-info" id="scraptNYT">Scraping!</button>
+      <div class="container">
+        <h1 class="display-4">Fluid jumbotron</h1>
+        <p class="lead">
+          This is a modified jumbotron that occupies the entire horizontal space
+          of its parent.
+        </p>
+        <button class="btn btn-info" id="scraptNYT">Scraping!</button>
+      </div>
+    </div>
+
+    <div
+      class="col-10 justify-content-md-center mx-auto"
+      id="articleList"
+    ></div>
+
+    <div
+      class="modal"
+      id="basicModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="basicModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Comment to : <span id="newsId"></span></h5>
+            <button
+              type="button"
+              class="close emptyData"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: auto;">
+              <ul class="list-group list-group-flush" id="historyNote"></ul>
+            </div>
+            <hr />
+            <p>Add Notes :</p>
+            <textarea class="form-control" id="commentNote" rows="3"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary emptyData"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="submitNote"
+              data-dismiss="modal"
+            >
+              Save changes
+            </button>
+          </div>
         </div>
       </div>
-    
-    <div class="col-10 justify-content-md-center mx-auto" id="articleList">
-
     </div>
-   
-    <div class="modal" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Comment to : <span id="newsId"></span></h5>
-                  <button type="button" class="close emptyData" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                    <div class="card" style="width: auto;">
-                        <ul class="list-group list-group-flush" id="historyNote">
-                        </ul>
-                      </div>
-                      <hr>
-                      <p>Add Notes :</p>
-                  <textarea class = "form-control"id="commentNote" rows="3"></textarea>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary emptyData" data-dismiss="modal" >Close</button>
-                  <button type="button" class="btn btn-primary" id="submitNote" data-dismiss="modal">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
-    <script  src = "app.js"></script>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>
