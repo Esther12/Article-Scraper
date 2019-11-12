@@ -26,7 +26,7 @@ function display() {
             <div class="card-body">
             <h4 class="card-title"><a href = ${data[i].link}>${data[i].title}<a></h4>
             <p class="card-text">${data[i].description}</p>
-            <a class="btn btn-warning btn-sm float-right addNote" data-toggle="modal" data-target="#basicModal" data-id=${data[i]._id}>Add Notes</a>
+            <a class="btn btn-warning btn-sm p-1 addNote" data-toggle="modal" data-target="#basicModal" data-id=${data[i]._id}>Add Comments</a>
             <div>
             <div>
             <div>
