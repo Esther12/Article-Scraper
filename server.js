@@ -16,13 +16,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
+require("dotenv").config();
 
 //Connecting to MongoDB
-//mongoose.connect(process.env.PORT || "mongodb://user:ro0tro0t@ds355357.mlab.com:55357/heroku_cs6dl5ll",{ useNewUrlParser: true });
 
-var MONGODB_URI =
-  process.env.MONGODB_URI ||
-  "mongodb://user:ro0tro0t@ds355357.mlab.com:55357/heroku_cs6dl5ll";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytscraper";
 //var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytscraper";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
@@ -30,7 +28,8 @@ console.log(
   "\n***********************************\n" +
     "Grabbing every thread name and link\n" +
     "from NYT's web board:" +
-    "\n***********************************\n"
+    "\n***********************************\n" +
+    process.env.MONGODB_URI
 );
 
 // A GET route for scraping the echoJS website
